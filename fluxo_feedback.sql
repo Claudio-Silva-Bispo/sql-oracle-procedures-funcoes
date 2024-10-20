@@ -574,3 +574,15 @@ INSERT INTO Feedback (fk_id_cliente, fk_id_especialista, fk_id_clinica, nota, co
 INSERT INTO Feedback (fk_id_cliente, fk_id_especialista, fk_id_clinica, nota, comentario) VALUES (4, 3, 3, 2, 'Não gostei da consulta, serviço ruim.');
 INSERT INTO Feedback (fk_id_cliente, fk_id_especialista, fk_id_clinica, nota, comentario) VALUES (4, 1, 1, 2, 'Foi um atendimento ruim, faltou atenção.');
 INSERT INTO Feedback (fk_id_cliente, fk_id_especialista, fk_id_clinica, nota, comentario) VALUES (4, 2, 1, 2, 'Consulta ruim, esperava mais cuidado.');
+
+
+SELECT f.id_feedback, f.fk_id_cliente, f.fk_id_especialista, f.fk_id_clinica, f.nota, f.comentario,
+       c.nome_completo AS nome_cliente,
+       d.nome AS nome_dentista,
+       cl.nome AS nome_clinica
+FROM Feedback f
+JOIN Cliente c ON f.fk_id_cliente = c.id_cliente
+JOIN Especialista d ON f.fk_id_especialista = d.id_especialista
+JOIN Clinica cl ON f.fk_id_clinica = cl.id_clinica
+
+ORDER BY f.id_feedback;
