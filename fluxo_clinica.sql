@@ -13,6 +13,8 @@ DROP TABLE Clinica CASCADE CONSTRAINTS;
 DROP TABLE ClinicaTurno CASCADE CONSTRAINTS;
 DROP TABLE ClinicaDia CASCADE CONSTRAINTS;
 DROP TABLE ClinicaHorario CASCADE CONSTRAINTS;
+DROP TABLE ClinicaEspecialidade CASCADE CONSTRAINTS;
+DROP TABLE ClinicaEspecialista CASCADE CONSTRAINTS;
 
 // 2. Criar tabelas
 
@@ -262,6 +264,12 @@ INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (3, 2); -- Clínica 3, Ta
 INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (4, 1); -- Clínica 4, Manhã
 INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (5, 2); -- Clínica 5, Tarde
 INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (6, 3); -- Clínica 6, Noite
+INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (7, 1); -- Clínica 6, Manhã
+INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (8, 1); -- Clínica 6, Manhã
+INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (9, 2); -- Clínica 6, Tarde
+INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (10, 2); -- Clínica 6, Tarde
+INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (10, 1); -- Clínica 6, Manhã
+INSERT INTO ClinicaTurno (id_clinica, id_turno) VALUES (10, 3); -- Clínica 6, Noite
 
 SELECT * FROM ClinicaTurno;
 
@@ -276,6 +284,16 @@ INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (4, 1);
 INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (5, 2);
 INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (5, 4);
 INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (6, 1);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 1);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 2);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 3);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 4);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 5);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 6);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (7, 7);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (8, 1);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (9, 2);
+INSERT INTO ClinicaDia (id_clinica, id_preferencia_dia) VALUES (10, 4);
 
 SELECT * FROM ClinicaDia;
 
@@ -290,7 +308,12 @@ INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (3, 4);
 INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (4, 1);
 INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (4, 3);
 INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (5, 2);
-INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (5, 5);
+INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (6, 5);
+INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (7, 4);
+INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (8, 2);
+INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (9, 6);
+INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (10, 5);
+INSERT INTO ClinicaHorario (id_clinica, id_preferencia_horario) VALUES (10, 1);
 
 SELECT * FROM ClinicaHorario;
 
@@ -304,12 +327,17 @@ INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (3, 2);
 INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (3, 4);
 INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (4, 1);
 INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (4, 3);
-INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (5, 2);
-INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (5, 5);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (5, 1);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (6, 1);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (7, 1);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (8, 2);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (9, 1);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (10, 1);
+INSERT INTO ClinicaEspecialidade (id_clinica, id_especialidade) VALUES (5, 1);
 
 SELECT * FROM ClinicaEspecialidade;
 
--- Inserindo dados na tabela ClinicaEspecialidade
+-- Inserindo dados na tabela ClinicaEspecialista
 
 INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (1, 1);
 INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (1, 2);
@@ -320,7 +348,12 @@ INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (3, 4);
 INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (4, 1);
 INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (4, 3);
 INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (5, 2);
-INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (5, 5);
+INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (6, 5);
+INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (7, 4);
+INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (8, 3);
+INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (9, 1);
+INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (10, 5);
+INSERT INTO ClinicaEspecialista (id_clinica, id_especialista) VALUES (10, 1);
 
 SELECT * FROM ClinicaEspecialista;
 
@@ -450,6 +483,8 @@ SELECT
     c.nome AS nome_clinica,
     c.telefone,
     c.email,
+    e.estado,
+    e.cidade,
     e.bairro,
     e.rua,
     e.numero,
