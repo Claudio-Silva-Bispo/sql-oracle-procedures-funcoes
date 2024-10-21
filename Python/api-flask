@@ -1,0 +1,34 @@
+# Executar no CMD usando python nome-arquivo.py
+# usar post com rota http://127.0.0.1:5000/analisar-sentimento
+
+from flask import Flask, request, jsonify
+import joblib
+import scipy
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+app = Flask(__name__)
+
+# Carregar o modelo treinado e o vetorizador
+model = joblib.load('modelo_treinado.pkl')
+vectorizer = joblib.load('vectorizer.pkl')
+
+@app.route('/analisar-sentimento', methods=['POST'])
+def predict():
+    data = request.get_json(force=True)
+    comentario = data['COMENTARIO']
+    
+    # Pré-processar o comentário
+    comentario_tfidf = vectorizer.transform([comentario])
+    
+    # Adicionar a análise de sentimento
+    analyzer = SentimentIntensityAnalyzer()
+    sentimento = analyzer.polarity_scores(comentario)['compound']
+    comentario_tfidf = scipy.sparse.hstack((comentario_tfidf, [[sentimento]]))
+    
+    # Fazer a previsão
+    nota_pred = model.predict(comentario_tfidf)
+    
+    return jsonify(AVALIACAO=int(nota_pred[0]))
+
+if __name__ == '__main__':
+    app.run(debug=True)
